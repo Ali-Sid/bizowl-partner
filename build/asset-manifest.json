@@ -1,0 +1,30 @@
+{
+  "files": {
+    "main.css": "/static/css/main.39486b67.css",
+    "main.js": "/static/js/main.41c32a9a.js",
+    "static/media/auth.png": "/static/media/auth.20d5979b439e1531640d.png",
+    "static/media/banner.png": "/static/media/banner.80db2a895510dd2719aa.png",
+    "static/media/avatar1.png": "/static/media/avatar1.eeef2af6dfcd3ff23cb8.png",
+    "static/media/Navbar.png": "/static/media/Navbar.f96a9f58c491b9acda99.png",
+    "static/media/avatar4.png": "/static/media/avatar4.54d5c1de851c273b2cd9.png",
+    "static/media/Image-upload 1.png": "/static/media/Image-upload 1.fdd50f099d5be1e5d64b.png",
+    "static/media/logo-of-BIZOWL--Business-Services.png": "/static/media/logo-of-BIZOWL--Business-Services.8231822a7fb9c9df976b.png",
+    "static/media/exclusiveness.png": "/static/media/exclusiveness.1921f45e31b63832c500.png",
+    "static/media/Vector.png": "/static/media/Vector.d26de69a4c38a886155d.png",
+    "static/media/flexible.png": "/static/media/flexible.bd24938e5ecd47702052.png",
+    "static/media/authentic.png": "/static/media/authentic.29ffa8a27f3534d18a1b.png",
+    "static/media/Ellipse 658.png": "/static/media/Ellipse 658.bc544617ec16ef9bc21d.png",
+    "static/media/File-Preview 1.png": "/static/media/File-Preview 1.5a49ec27692789ab14f7.png",
+    "static/media/Project3.png": "/static/media/Project3.378b532af038bf47559c.png",
+    "static/media/Project2.png": "/static/media/Project2.90f702366422b52138b1.png",
+    "static/media/Project1.png": "/static/media/Project1.d5952144f76e2cb9e5d6.png",
+    "static/media/pajamas_profile.svg": "/static/media/pajamas_profile.10f12d8c07eb267cf71c5429d46ba1d3.svg",
+    "index.html": "/index.html",
+    "main.39486b67.css.map": "/static/css/main.39486b67.css.map",
+    "main.41c32a9a.js.map": "/static/js/main.41c32a9a.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.39486b67.css",
+    "static/js/main.41c32a9a.js"
+  ]
+}
