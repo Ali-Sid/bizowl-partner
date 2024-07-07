@@ -177,7 +177,7 @@ const PartnerDashboard = () => {
                 </Flex>
             </Flex>
             {/* <MiniCalendar h='100%' minW='100%' selectRange={false} /> */}
-            <Flex mt="3rem" justifyContent="space-between">
+            {/* <Flex mt="3rem" justifyContent="space-between">
                 <Box
                     backgroundColor="#FFFFFF"
                     width="55%"
@@ -306,7 +306,7 @@ const PartnerDashboard = () => {
                         </TabPanels>
                     </Tabs>
                 </Box>
-            </Flex>
+            </Flex> */}
         </>
     )
 }

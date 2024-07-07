@@ -46,7 +46,7 @@ const Header = (props) => {
             >
                 <Icon mr="1rem" as={MdOutlineEmail} />
                 <Icon mr="1.5rem" as={FaRegBell} />
-                <Avatar mr="1rem" src={partnerProfile?.profile} />
+                <Avatar mr="1rem" name={partnerProfile?.firstName} src={partnerProfile?.profile} />
                 <Flex flexDirection="column">
                     <Text mr="1rem" fontWeight="bold">{partnerProfile?.firstName ?? ""} {partnerProfile?.middleName ?? ""} {partnerProfile?.lastName ?? ""}</Text>
                     <Text fontSize="sm">{partnerProfile?.company ?? ""}</Text>

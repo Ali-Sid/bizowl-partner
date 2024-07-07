@@ -75,7 +75,7 @@ const Profile = () => {
             )}
             <Flex alignItems="center">
                 <Box>
-                    <Avatar size='2xl' name='image' src={profilePicture} />
+                    <Avatar size='2xl' name={partnerData.firstName} src={profilePicture} />
                     <Input
                         id="image"
                         name="image"

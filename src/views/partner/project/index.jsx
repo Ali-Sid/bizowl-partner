@@ -128,7 +128,7 @@ const Project = () => {
                     <CustomCard key={index} card={item} />
                 ))}
             </Flex>
-            <Flex
+            {/* <Flex
                 mb="2rem"
                 position="relative"
             >
@@ -241,7 +241,7 @@ const Project = () => {
                     <Text mr="0.6rem" >{startDate}</Text>
                     <Text><span style={{ marginRight: "0.6rem", fontSize: "0.8rem" }}>To</span>{endDate}</Text>
                 </Flex>
-            </Flex>
+            </Flex> */}
             {/* <Flex
                 mb="2rem"
                 position="relative"
@@ -316,7 +316,7 @@ const Project = () => {
                 </Flex>
             </Flex> */}
 
-            <EnquiryTable
+            {/* <EnquiryTable
                 columnData={enquiryColumnData}
             />
             <Box mt="3rem">
@@ -324,7 +324,7 @@ const Project = () => {
                     columnData={paymentHistoryColumnData}
                     rowData={paymentHistoryRowData}
                 />
-            </Box>
+            </Box> */}
         </>
 
     );

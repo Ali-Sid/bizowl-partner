@@ -71,6 +71,47 @@ const EnquiryTable = ({ columnData }) => {
     question: "",
   });
   const [customerDecisionPriority, setCustomerDecisionPriority] = useState([]);
+  const [displayDbData, setDisplayDbData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const querySnapshot = await getDocs(collection(db, "assignments"));
+      const data = [];
+      querySnapshot.forEach((doc) => {
+        const assignmentData = doc.data();
+        const rowData = assignmentData.rowData;
+        const partners = assignmentData.partners;
+
+        // Check if rowData and partners are objects
+        if (typeof rowData === "object" && typeof partners === "object") {
+          const rowDataArray = Object.values(rowData);
+          const partnersArray = Object.values(partners);
+
+          rowDataArray.forEach((row) => {
+            partnersArray.forEach((partner) => {
+              data.push({
+                services: partner.services,
+                subCategoryServices: partner.subCategoryServices,
+                startDate: row.startDate,
+                time: row.time,
+                name: row.name,
+                budget: row.budget,
+                projectType: row.projectType,
+                timeLine: row.timeLine,
+                status: row.status,
+                // Add more fields as needed
+              });
+            });
+          });
+        }
+      });
+
+      setDisplayDbData(data);
+      console.log(displayDbData)
+    };
+
+    fetchData();
+  }, []);
 
   useEffect(() => {
     getServiceRequests();
@@ -93,8 +134,9 @@ const EnquiryTable = ({ columnData }) => {
             ...doc.data(),
             srNo: index + 1,
             id: doc.id,
-            name: `${doc.data().userDetails?.firstName}  ${doc.data().userDetails?.lastName
-              }`,
+            name: `${doc.data().userDetails?.firstName}  ${
+              doc.data().userDetails?.lastName
+            }`,
             email: doc.data().userDetails?.email,
             phone: doc.data().userDetails?.phone,
           };
@@ -111,7 +153,7 @@ const EnquiryTable = ({ columnData }) => {
 
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
-  const displayData = enquiryData.slice(startIndex, endIndex);
+  const displayData = displayDbData.slice(startIndex, endIndex);
   const totalPages = Math.ceil(enquiryData.length / itemsPerPage);
 
   const handleNext = () => {
@@ -163,9 +205,19 @@ const EnquiryTable = ({ columnData }) => {
 
   const handleDateRange = (dateRange) => {
     if (dateRange.length > 0) {
-      setStartDate(`${dateRange[0].getDate()} ${months[dateRange[0].getMonth() + 1]} ${dateRange[0].getFullYear()}`);
-      setEndDate(`${dateRange[1].getDate()} ${months[dateRange[1].getMonth() + 1]} ${dateRange[1].getFullYear()}`);
-      const diffRange = Math.ceil((dateRange[1].getTime() - dateRange[0].getTime()) / (1000 * 3600 * 24));
+      setStartDate(
+        `${dateRange[0].getDate()} ${
+          months[dateRange[0].getMonth() + 1]
+        } ${dateRange[0].getFullYear()}`
+      );
+      setEndDate(
+        `${dateRange[1].getDate()} ${
+          months[dateRange[1].getMonth() + 1]
+        } ${dateRange[1].getFullYear()}`
+      );
+      const diffRange = Math.ceil(
+        (dateRange[1].getTime() - dateRange[0].getTime()) / (1000 * 3600 * 24)
+      );
       if (diffRange >= 31) {
         const months = Math.floor(diffRange / 30);
         const days = diffRange % 30;
@@ -184,8 +236,8 @@ const EnquiryTable = ({ columnData }) => {
         setNumberOfDays(`${diffRange} day`);
       }
     }
-    setOpenCalendar(!openCalendar)
-  }
+    setOpenCalendar(!openCalendar);
+  };
 
   return (
     <>
@@ -199,8 +251,12 @@ const EnquiryTable = ({ columnData }) => {
         <Flex m="0.3rem 2rem" justifyContent="space-between">
           <Flex alignItems="center" fontWeight="bold" fontSize="1.1rem">
             <Text cursor="pointer">New Enquiries</Text>
-            <Text cursor="pointer" ml="1rem">Pending</Text>
-            <Text cursor="pointer" ml="1rem">Rejected Enquiries</Text>
+            <Text cursor="pointer" ml="1rem">
+              Pending
+            </Text>
+            <Text cursor="pointer" ml="1rem">
+              Rejected Enquiries
+            </Text>
           </Flex>
           <Flex justifyContent="flex-end" alignItems="center">
             <Img
@@ -210,8 +266,13 @@ const EnquiryTable = ({ columnData }) => {
             />
             <Text mr="0.6rem">Past {numberOfDays}</Text>
             <Flex position="relative">
-              <ChevronDownIcon mr="0.6rem" fontSize="2rem" onClick={() => setOpenCalendar(!openCalendar)} cursor="pointer" />
-              {openCalendar &&
+              <ChevronDownIcon
+                mr="0.6rem"
+                fontSize="2rem"
+                onClick={() => setOpenCalendar(!openCalendar)}
+                cursor="pointer"
+              />
+              {openCalendar && (
                 <Box
                   position="absolute"
                   top="33px"
@@ -222,16 +283,22 @@ const EnquiryTable = ({ columnData }) => {
                     selectRange={true}
                     onChange={handleDateRange}
                     view={"month"}
-                    tileContent={<Text color='brand.500'></Text>}
-                    prevLabel={<Icon as={MdChevronLeft} w='24px' h='24px' mt='4px' />}
-                    nextLabel={<Icon as={MdChevronRight} w='24px' h='24px' mt='4px' />}
+                    tileContent={<Text color="brand.500"></Text>}
+                    prevLabel={
+                      <Icon as={MdChevronLeft} w="24px" h="24px" mt="4px" />
+                    }
+                    nextLabel={
+                      <Icon as={MdChevronRight} w="24px" h="24px" mt="4px" />
+                    }
                   />
                 </Box>
-              }
+              )}
             </Flex>
             <Text mr="0.6rem">{startDate}</Text>
             <Text>
-              <span style={{ marginRight: "0.6rem", fontSize: "0.8rem" }}>To</span>
+              <span style={{ marginRight: "0.6rem", fontSize: "0.8rem" }}>
+                To
+              </span>
               {endDate}
             </Text>
           </Flex>
@@ -410,9 +477,7 @@ const EnquiryTable = ({ columnData }) => {
               {currentEnquiry?.requirements}
             </Text>
             <HSeparator boxShadow="0px 0.25rem 0.25rem 0px rgba(0, 0, 0, 0.4)" />
-            <Text mt="1rem">
-              Customer Decision Priority
-            </Text>
+            <Text mt="1rem">Customer Decision Priority</Text>
             <Flex flexDirection="column">
               {customerDecisionPriority.map((item, index) => {
                 return (
@@ -425,7 +490,7 @@ const EnquiryTable = ({ columnData }) => {
                       textAlign="center"
                       backgroundColor={item[0].bgColor}
                       color={item[0].color}
-                      _hover={{ bg: '#ebedf0', color: "#FFFFFF" }}
+                      _hover={{ bg: "#ebedf0", color: "#FFFFFF" }}
                       borderTopLeftRadius="1rem"
                       borderBottomLeftRadius="1rem"
                     >
@@ -439,7 +504,7 @@ const EnquiryTable = ({ columnData }) => {
                       textAlign="center"
                       backgroundColor={item[1].bgColor}
                       color={item[1].color}
-                      _hover={{ bg: '#ebedf0', color: "#FFFFFF" }}
+                      _hover={{ bg: "#ebedf0", color: "#FFFFFF" }}
                     >
                       {item[1].text}
                     </Box>
@@ -451,14 +516,14 @@ const EnquiryTable = ({ columnData }) => {
                       textAlign="center"
                       backgroundColor={item[2].bgColor}
                       color={item[2].color}
-                      _hover={{ bg: '#ebedf0', color: "#FFFFFF" }}
+                      _hover={{ bg: "#ebedf0", color: "#FFFFFF" }}
                       borderTopRightRadius="1rem"
                       borderBottomRightRadius="1rem"
                     >
                       {item[2].text}
                     </Box>
                   </Flex>
-                )
+                );
               })}
             </Flex>
             <Text mt="1rem" mb="1rem">
@@ -473,7 +538,7 @@ const EnquiryTable = ({ columnData }) => {
                 textAlign="center"
                 backgroundColor="#D8F9E6"
                 color="#5DEF92"
-                _hover={{ bg: '#ebedf0', color: "#FFFFFF" }}
+                _hover={{ bg: "#ebedf0", color: "#FFFFFF" }}
                 borderTopLeftRadius="1rem"
                 borderBottomLeftRadius="1rem"
               >
@@ -487,7 +552,7 @@ const EnquiryTable = ({ columnData }) => {
                 textAlign="center"
                 backgroundColor="#5DEF9233"
                 color="#5DEF92"
-                _hover={{ bg: '#ebedf0', color: "#FFFFFF" }}
+                _hover={{ bg: "#ebedf0", color: "#FFFFFF" }}
               >
                 Open
               </Box>
@@ -499,7 +564,7 @@ const EnquiryTable = ({ columnData }) => {
                 textAlign="center"
                 backgroundColor="#65C756"
                 color="#FFFFFF"
-                _hover={{ bg: '#ebedf0', color: "#FFFFFF" }}
+                _hover={{ bg: "#ebedf0", color: "#FFFFFF" }}
               >
                 In Progress
               </Box>
@@ -511,7 +576,7 @@ const EnquiryTable = ({ columnData }) => {
                 textAlign="center"
                 backgroundColor="#E0E0E0"
                 color="#455A64BF"
-                _hover={{ bg: '#ebedf0', color: "#FFFFFF" }}
+                _hover={{ bg: "#ebedf0", color: "#FFFFFF" }}
                 borderTopRightRadius="1rem"
                 borderBottomRightRadius="1rem"
               >
