@@ -128,7 +128,7 @@ const Project = () => {
                     <CustomCard key={index} card={item} />
                 ))}
             </Flex>
-            {/* <Flex
+            <Flex
                 mb="2rem"
                 position="relative"
             >
@@ -138,7 +138,7 @@ const Project = () => {
                         <Tab>Completed Projects</Tab>
                     </TabList>
                     <TabPanels>
-                        <TabPanel>
+                        {/* <TabPanel>
                             <Flex
                                 mt="2rem"
                                 flexWrap="wrap"
@@ -171,8 +171,8 @@ const Project = () => {
                                     Next
                                 </Button>
                             </Flex>
-                        </TabPanel>
-                        <TabPanel>
+                        </TabPanel> */}
+                        {/* <TabPanel>
                             <Flex
                                 mt="2rem"
                                 flexWrap="wrap"
@@ -205,7 +205,7 @@ const Project = () => {
                                     Next
                                 </Button>
                             </Flex>
-                        </TabPanel>
+                        </TabPanel> */}
                     </TabPanels>
                 </Tabs>
 
@@ -241,7 +241,7 @@ const Project = () => {
                     <Text mr="0.6rem" >{startDate}</Text>
                     <Text><span style={{ marginRight: "0.6rem", fontSize: "0.8rem" }}>To</span>{endDate}</Text>
                 </Flex>
-            </Flex> */}
+            </Flex>
             {/* <Flex
                 mb="2rem"
                 position="relative"

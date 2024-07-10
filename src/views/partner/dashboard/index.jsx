@@ -177,7 +177,7 @@ const PartnerDashboard = () => {
                 </Flex>
             </Flex>
             {/* <MiniCalendar h='100%' minW='100%' selectRange={false} /> */}
-            {/* <Flex mt="3rem" justifyContent="space-between">
+            <Flex mt="3rem" justifyContent="space-between">
                 <Box
                     backgroundColor="#FFFFFF"
                     width="55%"
@@ -200,7 +200,7 @@ const PartnerDashboard = () => {
                     {chatData.map((item, index) => {
                         return (
                             <Box key={index}>
-                                <Flex p="1.5rem">
+                                {/* <Flex p="1.5rem">
                                     <Avatar src={ProfilePic} alt="Profile Pic" />
                                     <Flex
                                         ml="1rem"
@@ -209,8 +209,8 @@ const PartnerDashboard = () => {
                                         <Text fontWeight="bold">{item?.clientName}</Text>
                                         <Text fontSize="sm">{item?.message}</Text>
                                     </Flex>
-                                </Flex>
-                                <HSeparator />
+                                </Flex> */}
+                                {/* <HSeparator /> */}
                             </Box>
                         )
                     })}
@@ -244,10 +244,10 @@ const PartnerDashboard = () => {
                         </TabList>
                         <TabPanels>
                             <TabPanel>
-                                <Flex justifyContent="space-between">
+                                {/* <Flex justifyContent="space-between">
                                     <Box backgroundColor="#407BFFE5" borderRadius="2rem" padding="0.5rem 1.5rem 0.5rem 1.5rem">Upcoming</Box>
                                     <Box backgroundColor="#D9D9D9" borderRadius="2rem" padding="0.5rem 1.5rem 0.5rem 1.5rem" >Past</Box>
-                                </Flex>
+                                </Flex> */}
                                 {dashboardData.map((item, index) => (
                                     <Box
                                         key={index}
@@ -255,9 +255,9 @@ const PartnerDashboard = () => {
                                         mt="1.5rem"
                                         height="auto"
                                         borderRadius="1rem"
-                                        boxShadow="0.4375rem 0rem 0.25rem 0rem rgba(64, 123, 255, 0.65),-0.4375rem 0rem 0.25rem 0rem rgba(64, 123, 255, 0.65)"
+                                        // boxShadow="0.4375rem 0rem 0.25rem 0rem rgba(64, 123, 255, 0.65),-0.4375rem 0rem 0.25rem 0rem rgba(64, 123, 255, 0.65)"
                                     >
-                                        <Flex>
+                                        {/* <Flex>
                                             <Avatar src={ProfilePic} />
                                             <Flex
                                                 ml="1rem"
@@ -295,7 +295,7 @@ const PartnerDashboard = () => {
                                                 <Icon mr="0.5rem" as={AiOutlineCloseCircle} color="#DE3163" />
                                                 Cancel
                                             </Flex>
-                                        </Flex>
+                                        </Flex> */}
                                     </Box>
                                 ))}
 
@@ -306,7 +306,7 @@ const PartnerDashboard = () => {
                         </TabPanels>
                     </Tabs>
                 </Box>
-            </Flex> */}
+            </Flex>
         </>
     )
 }

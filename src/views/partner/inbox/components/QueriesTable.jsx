@@ -41,7 +41,7 @@ const QueriesTable = () => {
                             </Tr>
                         </Thead>
                         <Tbody>
-                            {rowData.map((item, index) => (
+                            {/* {rowData.map((item, index) => (
                                 <Tr key={index}
                                     backgroundColor="#EBF2FA"
                                     boxShadow="0rem 0.25rem 0.25rem 0rem #00000025"
@@ -69,7 +69,7 @@ const QueriesTable = () => {
                                         <Text color="#407BFF">Open</Text>
                                     </Td>
                                 </Tr>
-                            ))}
+                            ))} */}
 
                         </Tbody>
                     </Table>

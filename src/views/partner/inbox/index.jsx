@@ -6,7 +6,7 @@ import QueriesTable from './components/QueriesTable'
 const Inbox = () => {
   return (
     <>
-      {/* <Tabs
+      <Tabs
         position="relative"
         variant='unstyled'
       >
@@ -31,7 +31,7 @@ const Inbox = () => {
       </Tabs>
       <Flex>
 
-      </Flex> */}
+      </Flex>
     </>
   )
 }

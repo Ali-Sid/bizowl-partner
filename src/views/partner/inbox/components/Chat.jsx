@@ -35,7 +35,7 @@ const Chat = () => {
                 {chatData.map((item, index) => {
                     return (
                         <Box key={index}>
-                            <Flex p="1.5rem">
+                            {/* <Flex p="1.5rem">
                                 <Avatar src={ProfilePic} alt="Profile Pic" />
                                 <Flex
                                     ml="1rem"
@@ -45,7 +45,7 @@ const Chat = () => {
                                     <Text fontSize="sm">{item?.message}</Text>
                                 </Flex>
                             </Flex>
-                            <HSeparator />
+                            <HSeparator /> */}
                         </Box>
                     )
                 })}
@@ -54,7 +54,7 @@ const Chat = () => {
                 ml="1rem"
                 width="38%"
             >
-                <Flex
+                {/* <Flex
                     justifyContent="space-between"
                     alignItems="center"
                 >
@@ -69,8 +69,8 @@ const Chat = () => {
                         <Icon as={MdOutlineVideocam} color="blue" />
                         <Icon as={IoCallOutline} ml="1rem" color="blue" />
                     </Flex>
-                </Flex>
-                <Flex pt="3rem" flexDirection="column">
+                </Flex> */}
+                {/* <Flex pt="3rem" flexDirection="column">
                     <Flex
                         color="white"
                         p="1rem"
@@ -82,8 +82,8 @@ const Chat = () => {
                         <Text>Your price is higher than other offer i got. c</Text>
                     </Flex>
                     <Text fontSize="0.8rem">9:12PM</Text>
-                </Flex>
-                <Flex
+                </Flex> */}
+                {/* <Flex
                     pt="1rem"
                     flexDirection="column"
                     alignItems="flex-end"
@@ -99,8 +99,8 @@ const Chat = () => {
                         <Text>Your price is higher than other offer i got. c</Text>
                     </Flex>
                     <Text fontSize="0.8rem" pr="1rem">9:12PM<span style={{ fontWeight: "bold", paddingLeft: "0.6rem" }}>You</span></Text>
-                </Flex>
-                <Flex
+                </Flex> */}
+                {/* <Flex
                     mt="30rem"
                     p="0.5rem 1rem"
                     alignItems="center"
@@ -113,13 +113,13 @@ const Chat = () => {
                     <Icon as={HiMiniPaperClip} ml="1rem" />
                     <Icon as={BsEmojiSmile} ml="1rem" />
                     <Button ml="10rem" bgColor="#1C6ED0BF">Send</Button>
-                </Flex>
+                </Flex> */}
             </Box>
             <Box
                 ml="1rem"
                 width="30%"
             >
-                <Flex justifyContent="flex-end">
+                {/* <Flex justifyContent="flex-end">
                     <Icon as={RxCross2} color="blue" />
                 </Flex>
 
@@ -167,7 +167,7 @@ const Chat = () => {
                             commodo consequat.
                         </AccordionPanel>
                     </AccordionItem>
-                </Accordion>
+                </Accordion> */}
             </Box>
         </Flex>
     )
