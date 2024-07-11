@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <link rel="icon" href="%PUBLIC_URL%/faviconIcon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
     <title itemprop="name">Bizowl Partner Portal</title>
@@ -12,6 +12,19 @@
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
+    <script>
+      if (
+        window.location.hostname == "bizowl-partner.web.app" ||
+        window.location.hostname == "bizowl-partner.firebaseapp.com"
+      ) {
+        // Construct the new URL while preserving the path and query string
+        const newPath =
+          "https://partner.bizzowl.com" +
+          window.location.pathname +
+          window.location.search;
+        window.location.href = newPath;
+      }
+    </script>
 
     <!--Start of Tawk.to Script-->
     <!-- <script type="text/javascript">
