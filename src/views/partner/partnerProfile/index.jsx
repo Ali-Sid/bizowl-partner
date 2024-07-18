@@ -13,6 +13,8 @@ import { collection, doc, getDocs, query, updateDoc, where } from 'firebase/fire
 import { db } from 'config/firebase';
 import { getCurrentPartner } from 'services/PartnerService';
 import { Spinner } from 'react-bootstrap';
+import useUserDisplayName from 'hooks/useUserDisplayName';
+import { auth } from 'config/firebase';
 
 const Profile = () => {
     const profilePicInputRef = useRef(null);
@@ -20,6 +22,7 @@ const Profile = () => {
     const [partnerId, setPartnerId] = useState("")
     const [isLoading, setIsLoading] = useState(true)
     const [partnerData,setPartnerData]=useState({})
+    const { displayName } = useUserDisplayName(db, auth);
     useEffect(() => {
         getPartnerProfile()
     }, [])
@@ -75,7 +78,7 @@ const Profile = () => {
             )}
             <Flex alignItems="center">
                 <Box>
-                    <Avatar size='2xl' name={partnerData.firstName} src={profilePicture} />
+                    <Avatar size='2xl' name={partnerData.firstName || displayName} src={profilePicture} />
                     <Input
                         id="image"
                         name="image"
@@ -89,6 +92,7 @@ const Profile = () => {
 
                 <Flex ml="1rem" flexDirection="column">
                     <Text fontSize="2rem" fontWeight="bold">{partnerData?.firstName??""} {partnerData?.middleName??""} {partnerData?.lastName??""}</Text>
+                    {displayName && <Text fontSize="2rem" fontWeight="bold">{displayName}</Text>}
                     <Text>Profile Completion : 100%</Text>
                     <Icon as={FaRegEdit} w="1.5rem" h="1.5rem" onClick={() => { profilePicInputRef.current.click() }} cursor="pointer" />
                 </Flex>
